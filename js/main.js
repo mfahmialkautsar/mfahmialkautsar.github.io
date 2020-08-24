@@ -2,18 +2,14 @@ let theme = localStorage.getItem('theme')
 
 let themeIcon = document.querySelector('.theme-switcher i')
 
-if (theme == null) {
-    theme = 'light'
-    setTheme(theme)
-} else {
-    setTheme(theme)
-}
-
-if (theme == 'light') {
+if (theme != 'night') {
+    theme = 'day'
     themeIcon.classList.add('fa-sun-o')
-} else if (theme == 'night') {
+} else {
+    theme = 'night'
     themeIcon.classList.add('fa-moon-o')
 }
+setTheme(theme)
 
 let themeButton = document.querySelector('.theme-switcher')
 themeButton.setAttribute('data-mode', theme)
@@ -21,12 +17,12 @@ themeButton.setAttribute('data-mode', theme)
 let rotate = true
 themeButton.addEventListener('click', function () {
     var mode = themeButton.getAttribute('data-mode')
-    if (mode == 'light') {
+    if (mode == 'day') {
         themeButton.setAttribute('data-mode', 'night')
         themeIcon.classList.remove('fa-sun-o')
         themeIcon.classList.add('fa-moon-o')
     } else if (mode == 'night') {
-        themeButton.setAttribute('data-mode', 'light')
+        themeButton.setAttribute('data-mode', 'day')
         themeIcon.classList.remove('fa-moon-o')
         themeIcon.classList.add('fa-sun-o')
     }
@@ -42,7 +38,7 @@ themeButton.addEventListener('click', function () {
 })
 
 function setTheme(mode) {
-    if (mode == 'light') {
+    if (mode == 'day') {
         document.getElementById('theme-style').href = 'css/style.css'
     } else if (mode == 'night') {
         document.getElementById('theme-style').href = 'css/night.css'
@@ -53,7 +49,7 @@ function setTheme(mode) {
 
 let workList = [{
     "id": 1,
-    "img": "the-movie-catalogue.png",
+    "img": "android_themoviecatalogue.jpg",
     "title": "The Movie Catalogue",
     "kind": "Android",
     "desc": "Android Movie Catalogue that provides Movies and Series information based on TMDB",
@@ -61,15 +57,15 @@ let workList = [{
 },
 {
     "id": 2,
-    "img": "movie-catalogue-liff.png",
+    "img": "liff_moviecatalogue.jpg",
     "title": "Movie Catalogue (LIFF)",
-    "kind": "Web, LINE Front-end Framework",
+    "kind": "Web, LINE Front-end<br>Framework ",
     "desc": "Web-based Movie Catalogue integrated with LINE Front-end Framework",
     "link": "https://github.com/mfahmialkautsar/MovieCatalogue-LIFF"
 },
 {
     "id": 3,
-    "img": "remember-me.png",
+    "img": "linebot_rememberme.jpg",
     "title": "Remember Me",
     "kind": "LINE Bot",
     "desc": "Notes bot, saves your notes and to-do list on every single LINE chat room separately",
@@ -77,21 +73,21 @@ let workList = [{
 },
 {
     "id": 4,
-    "img": "game-catalogue-ios.png",
+    "img": "ios_gamecatalogue.jpg",
     "title": "Game Catalogue",
     "kind": "iOS",
     "desc": "iOS Game Catalogue that provides Games information based on RAWG.",
     "link": "https://github.com/mfahmialkautsar/GameCatalogue-iOS"
-},]
+}]
 
 function createWorkContainer(img, title, kind, desc, link) {
     const work = document.createElement('div')
     work.classList.add('work')
 
     const p = `
-    <a class="no-decor text--main" href="${link}" target="_blank">
+    <a class="no-decor text--main card" href="${link}" target="_blank">
         <div class="image-container">
-            <img src="${img}" alt="">
+            <img src="${img}" alt="${title}">
             <div class="kind text--white">${kind}</div>
         </div>
         <div id="work-text">
