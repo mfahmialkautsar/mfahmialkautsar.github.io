@@ -72,6 +72,10 @@ h1 {
     font-weight: 400;
 }
 
+.text-highlighted {
+    color: var(--brownSugar);
+}
+
 #projects {
     margin: 60px auto;
     width: 90%;
