@@ -81,6 +81,7 @@ h1 {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
+    flex-flow: column;
     justify-content: center;
 }
 
