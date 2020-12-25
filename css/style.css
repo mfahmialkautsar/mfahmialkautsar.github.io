@@ -1,23 +1,24 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: 'Maven Pro', sans-serif;
+    font-family: "Maven Pro", sans-serif;
     word-wrap: break-word;
 }
 
 :root {
     --mainColor: #000000;
-    --mainOpponentColor: #FFFFFF;
+    --mainOpponentColor: #ffffff;
     --secondaryColor: #c9cfd6;
-    --bistre: #3B271D;
-    --coconut: #A05E2B;
-    --brownSugar: #AF734A;
-    --aztecGold: #C7934E;
-    --dutchWhite: #EFE0BB;
-    --floralWhite: #FFFAF1;
+    --bistre: #3b271d;
+    --coconut: #a05e2b;
+    --brownSugar: #af734a;
+    --aztecGold: #c7934e;
+    --dutchWhite: #efe0bb;
+    --floralWhite: #fffaf1;
     --linkHover: #fddb3a;
     --workWidth: 300px;
-    --workImageHeight: calc(var(--workWidth)*3/4);
+    --workImageHeight: calc(var(--workWidth) * 3 / 4);
+    --designImageHeight: calc(var(--workWidth));
 }
 
 body {
@@ -55,7 +56,7 @@ body {
 }
 
 .rotate {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
 }
 
 .main-container {
@@ -76,7 +77,7 @@ h1 {
     color: var(--brownSugar);
 }
 
-#projects {
+.projects {
     margin: 60px auto;
     width: 90%;
     display: flex;
@@ -85,15 +86,16 @@ h1 {
     justify-content: center;
 }
 
-#projects h2 {
+.projects h2 {
+    font-size: 46px;
     text-align: center;
-    font-size: 55px;
+    margin: auto;
     font-weight: 500;
     margin-bottom: 16px;
     color: var(--bistre);
 }
 
-#works {
+.projects-item {
     display: grid;
     grid-template-columns: repeat(4, auto);
     justify-content: center;
@@ -124,6 +126,14 @@ h1 {
 .image-container {
     width: 100%;
     height: var(--workImageHeight);
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.design-image-container {
+    width: 100%;
+    height: var(--designImageHeight);
     position: relative;
     border-radius: 10px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
@@ -177,8 +187,8 @@ footer {
     margin: 60px 32px 32px;
 }
 
-footer h3 {
-    margin-bottom: 8px;
+footer h4 {
+    margin-bottom: 10px;
     font-size: 20px;
     color: var(--floralWhite);
 }
@@ -189,7 +199,7 @@ footer ul {
 }
 
 footer li {
-    margin-top: 5px;
+    margin-top: 6px;
     font-size: 16px;
     font-weight: 500;
 }
@@ -215,7 +225,7 @@ footer a:hover {
 }
 
 @media only screen and (max-width: 1400px) {
-    #works {
+    .projects-item {
         grid-template-columns: repeat(3, auto);
     }
 
@@ -225,7 +235,7 @@ footer a:hover {
 }
 
 @media only screen and (max-width: 950px) {
-    #works {
+    .projects-item {
         grid-template-columns: repeat(2, auto);
     }
 
@@ -241,8 +251,8 @@ footer a:hover {
         max-width: 100%;
     }
 
-    #projects h2 {
-        font-size: 50px;
+    .projects h2 {
+        font-size: 43px;
     }
 }
 
@@ -251,8 +261,8 @@ footer a:hover {
         font-size: 40px;
     }
 
-    #projects h2 {
-        font-size: 45px;
+    .projects h2 {
+        font-size: 38px;
     }
 }
 
@@ -265,8 +275,16 @@ footer a:hover {
         padding: 60px;
     }
 
-    #works {
+    .projects-item {
         grid-template-columns: repeat(1, auto);
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .projects h2 {
+        font-size: 33px;
     }
 }
 
@@ -280,7 +298,7 @@ footer a:hover {
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 420px) {
     .main-container {
         padding: 40px;
     }
@@ -289,7 +307,7 @@ footer a:hover {
         font-size: 30px;
     }
 
-    #projects h2 {
-        font-size: 40px;
+    .projects h2 {
+        font-size: 28px;
     }
 }
