@@ -33,6 +33,12 @@ const designs = [
         title: "Smart Home",
         link: "https://www.instagram.com/p/CIfBetIBoj7",
     },
+    {
+        id: 6,
+        img: "img/design/waiting_for_order_page.jpg",
+        title: "Waiting for Order",
+        link: "https://www.instagram.com/p/CJWC1-YheXV",
+    },
 ];
 
 export default designs;
