@@ -1,24 +1,25 @@
 * {
     box-sizing: border-box;
-    margin: 0;
     font-family: "Maven Pro", sans-serif;
+    margin: 0;
+    transition: 1000ms all;
     word-wrap: break-word;
 }
 
 :root {
+    --aztecGold: #c7934e;
+    --bistre: #3b271d;
+    --brownSugar: #af734a;
+    --coconut: #a05e2b;
+    --dutchWhite: #efe0bb;
+    --floralWhite: #fffaf1;
+    --height-design-image: calc(var(--workWidth));
+    --height-work-image: calc(var(--workWidth) * 3 / 4);
+    --linkHover: #fddb3a;
     --mainColor: #000000;
     --mainOpponentColor: #ffffff;
     --secondaryColor: #c9cfd6;
-    --bistre: #3b271d;
-    --coconut: #a05e2b;
-    --brownSugar: #af734a;
-    --aztecGold: #c7934e;
-    --dutchWhite: #efe0bb;
-    --floralWhite: #fffaf1;
-    --linkHover: #fddb3a;
     --workWidth: 300px;
-    --workImageHeight: calc(var(--workWidth) * 3 / 4);
-    --designImageHeight: calc(var(--workWidth));
 }
 
 body {
@@ -125,7 +126,7 @@ h1 {
 
 .image-container {
     width: 100%;
-    height: var(--workImageHeight);
+    height: var(--height-work-image);
     position: relative;
     border-radius: 10px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
@@ -133,7 +134,7 @@ h1 {
 
 .design-image-container {
     width: 100%;
-    height: var(--designImageHeight);
+    height: var(--height-design-image);
     position: relative;
     border-radius: 10px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);

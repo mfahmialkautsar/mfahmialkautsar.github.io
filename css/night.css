@@ -1,12 +1,12 @@
 :root {
+    --aztecGold: #af734a;
+    --bistre: #fffaf1;
+    --brownSugar: #c7934e;
+    --dutchWhite: #a05e2b;
+    --coconut: #efe0bb;
+    --floralWhite: #3b271d;
+    --linkHover: #ff9234;
     --mainColor: #ffffff;
     --mainOpponentColor: #000000;
     --secondaryColor: #414141;
-    --bistre: #fffaf1;
-    --coconut: #efe0bb;
-    --brownSugar: #c7934e;
-    --aztecGold: #af734a;
-    --dutchWhite: #a05e2b;
-    --floralWhite: #3b271d;
-    --linkHover: #ff9234;
 }
