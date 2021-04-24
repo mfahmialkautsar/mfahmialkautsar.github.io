@@ -9,33 +9,33 @@ const designs = [
     },
     {
         id: 2,
-        img: "img/design/course_page.jpg",
+        img: "/images/design/course_page.jpg",
         title: "Course App",
         link:
             "https://www.instagram.com/p/CHsDImaFl7L/?utm_source=ig_web_button_share_sheet",
     },
     {
         id: 3,
-        img: "img/design/animal_related_page.jpg",
+        img: "/images/design/animal_related_page.jpg",
         title: "Animal Related",
         link:
             "https://www.instagram.com/p/CH7Cd62FDZa/?utm_source=ig_web_copy_link",
     },
     {
         id: 4,
-        img: "img/design/game_explore_page.jpg",
+        img: "/images/design/game_explore_page.jpg",
         title: "Game Explore",
         link: "https://www.instagram.com/p/CIfCR9BBzbT/",
     },
     {
         id: 5,
-        img: "img/design/smart_home_page.jpg",
+        img: "/images/design/smart_home_page.jpg",
         title: "Smart Home",
         link: "https://www.instagram.com/p/CIfBetIBoj7",
     },
     {
         id: 6,
-        img: "img/design/waiting_for_order_page.jpg",
+        img: "/images/design/waiting_for_order_page.jpg",
         title: "Waiting for Order",
         link: "https://www.instagram.com/p/CJWC1-YheXV",
     },
