@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600');
+@import 'typewrite';
+@import 'greet';
 
 * {
   box-sizing: border-box;
@@ -238,6 +240,10 @@ footer a:hover {
 
   .projects h2 {
     font-size: 43px;
+  }
+
+  .projects-item {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 

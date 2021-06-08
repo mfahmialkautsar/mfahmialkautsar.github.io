@@ -1,0 +1,24 @@
+.typewrite > .wrap {
+  border-right: 0.08em solid var(--bistre);
+}
+.typewrite {
+  opacity: 0;
+}
+
+.typewrite-show {
+  opacity: 1;
+  transition: opacity 250ms ease;
+
+  .wrap {
+    animation: blinkTextCursor 750ms infinite normal;
+  }
+}
+
+@keyframes blinkTextCursor {
+  50% {
+    border-right-color: var(--bistre);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
