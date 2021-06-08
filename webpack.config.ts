@@ -54,7 +54,6 @@ const config: Configuration = {
       },
       minify: 'auto',
       template: path.resolve(__dirname, 'src/index.html'),
-      title: 'Fahmi Al',
     }),
   ],
   module: {

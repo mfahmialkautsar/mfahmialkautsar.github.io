@@ -2,6 +2,39 @@ interface HeadLink extends HTMLElement {
   href: string;
 }
 
+const fetchNightTheme = fetch('/css/night.css')
+  .then((res) => res.body)
+  .then((rb) => {
+    if (!rb) return;
+    const reader = rb.getReader();
+
+    return new ReadableStream({
+      start(controller) {
+        function push() {
+          reader.read().then(({done, value}) => {
+            if (done) {
+              controller.close();
+              return;
+            }
+
+            controller.enqueue(value);
+            push();
+          });
+        }
+
+        push();
+      },
+    });
+  })
+  .then((stream) => {
+    return new Response(stream, {
+      headers: {'Content-Type': 'text/css'},
+    }).text();
+  });
+
+const setNightTheme = (completion: (result: string) => void) =>
+  fetchNightTheme.then(completion);
+
 function theme() {
   let theme = localStorage.getItem('theme');
 
@@ -52,20 +85,22 @@ function theme() {
 
     const themeStyle = document.getElementById('theme-style') as HeadLink;
     if (!themeStyle) {
-      const themeStyle = document.createElement('link');
-      themeStyle.id = 'theme-style'
-      themeStyle.rel = 'stylesheet';
+      const themeStyle = document.createElement('style');
+      themeStyle.id = 'theme-style';
       document.getElementsByTagName('head')[0].appendChild(themeStyle);
       setTheme(mode);
       return;
     }
 
-    if (mode == 'day') {
-      themeStyle.href = '';
-    } else if (mode == 'night') {
-      themeStyle.href = 'css/night.css';
+    function insertStyle(value: string) {
+      if (mode == 'day') {
+        themeStyle.innerHTML = '';
+      } else if (mode == 'night') {
+        themeStyle.innerHTML = value;
+      }
     }
 
+    setNightTheme(insertStyle);
     localStorage.setItem('theme', mode);
   }
 }
