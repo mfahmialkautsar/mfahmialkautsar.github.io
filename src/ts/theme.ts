@@ -1,7 +1,12 @@
+interface HeadLink extends HTMLElement {
+  href: string;
+}
+
 function theme() {
   let theme = localStorage.getItem('theme');
 
   let themeIcon = document.querySelector('.theme-switcher i');
+  if (!themeIcon) return;
 
   if (theme != 'night') {
     theme = 'day';
@@ -13,10 +18,14 @@ function theme() {
   setTheme(theme);
 
   let themeButton = document.querySelector('.theme-switcher');
+  if (!themeButton) return;
+
   themeButton.setAttribute('data-mode', theme);
 
   let rotate = true;
-  themeButton.addEventListener('click', function () {
+  themeButton.addEventListener('click', function (this: HTMLElement) {
+    if (!themeButton || !themeIcon) return;
+
     var mode = themeButton.getAttribute('data-mode');
     if (mode == 'day') {
       themeButton.setAttribute('data-mode', 'night');
@@ -38,11 +47,23 @@ function theme() {
     setTheme(this.dataset.mode);
   });
 
-  function setTheme(mode) {
+  function setTheme(mode: string | undefined) {
+    if (!mode) return;
+
+    const themeStyle = document.getElementById('theme-style') as HeadLink;
+    if (!themeStyle) {
+      const themeStyle = document.createElement('link');
+      themeStyle.id = 'theme-style'
+      themeStyle.rel = 'stylesheet';
+      document.getElementsByTagName('head')[0].appendChild(themeStyle);
+      setTheme(mode);
+      return;
+    }
+
     if (mode == 'day') {
-      document.getElementById('theme-style').href = 'css/style.css';
+      themeStyle.href = '';
     } else if (mode == 'night') {
-      document.getElementById('theme-style').href = 'css/night.css';
+      themeStyle.href = 'css/night.css';
     }
 
     localStorage.setItem('theme', mode);

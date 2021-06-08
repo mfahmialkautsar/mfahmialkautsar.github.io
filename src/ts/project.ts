@@ -1,8 +1,10 @@
-import {default as projects} from '../data/projects.js';
-import {default as designs} from '../data/designs.js';
+import { Project } from '@/data/Project';
+import { Design } from "@/data/Design";
+const projects: [Project] = require('@/data/projects.json')["results"];
+const designs: [Design] = require('@/data/designs.json')["results"];
 
 function project() {
-  function createProjectContainer({title, img, category, desc, link}) {
+  function createProjectContainer({title, img, category, desc, link}: Project) {
     const projects = document.createElement('div');
     projects.classList.add('work');
 
@@ -22,7 +24,7 @@ function project() {
     return projects;
   }
 
-  function createDesignContainer({title, img, link}) {
+  function createDesignContainer({title, img, link}: Design) {
     const design = document.createElement('div');
     design.classList.add('work');
 
@@ -47,9 +49,9 @@ function project() {
     projs
       .slice()
       .reverse()
-      .forEach((proj) => {
+      .forEach((proj: Project) => {
         const projectContainter = createProjectContainer(proj);
-        projectsSection.appendChild(projectContainter);
+        projectsSection?.appendChild(projectContainter);
       });
   }
 
@@ -59,9 +61,9 @@ function project() {
 
     ds.slice()
       .reverse()
-      .forEach((design) => {
+      .forEach((design: Design) => {
         const designContainter = createDesignContainer(design);
-        desginsSection.appendChild(designContainter);
+        desginsSection?.appendChild(designContainter);
       });
   }
 
