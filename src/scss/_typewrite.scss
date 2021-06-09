@@ -3,11 +3,11 @@
 }
 .typewrite {
   opacity: 0;
+  transition: opacity 100ms ease;
 }
 
 .typewrite-show {
   opacity: 1;
-  transition: opacity 250ms ease;
 
   .wrap {
     animation: blinkTextCursor 750ms infinite normal;
@@ -17,6 +17,9 @@
 @keyframes blinkTextCursor {
   50% {
     border-right-color: var(--bistre);
+  }
+  51% {
+    border-right-color: transparent;
   }
   to {
     border-right-color: transparent;
