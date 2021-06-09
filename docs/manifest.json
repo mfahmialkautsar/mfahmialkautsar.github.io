@@ -1,0 +1,13 @@
+{
+  "short_name": "Fahmi Al",
+  "name": "Fahmi Al's Portfolio",
+  "author": "Fahmi Al",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/vnd.microsoft.icon"
+    }
+  ],
+  "start_url": "."
+}

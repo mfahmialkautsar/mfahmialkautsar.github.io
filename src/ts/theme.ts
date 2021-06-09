@@ -61,7 +61,7 @@ function theme() {
   themeButton.addEventListener('click', function (this: HTMLElement) {
     if (!themeButton || !themeIcon) return;
 
-    var mode = themeButton.getAttribute('data-mode');
+    let mode = themeButton.getAttribute('data-mode');
     if (mode == 'day') {
       themeButton.setAttribute('data-mode', 'night');
       themeIcon.classList.remove('fa-sun-o');
