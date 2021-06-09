@@ -9,11 +9,11 @@ class TxtType {
   tick() {}
   isDeleting;
 
-  constructor(el: Element, toRotate: [string], period: string) {
+  constructor(el: Element, toRotate: [string], period: string | null) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
+    this.period = parseInt(period || '2000', 10);
     this.txt = '';
     this.tick();
     this.isDeleting = false;
@@ -56,16 +56,16 @@ async function typewrite() {
   };
 
   await sleep(2250);
-  const elements = document.getElementsByClassName('typewrite');
-  for (var i = 0; i < elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-type');
-    var period = elements[i].getAttribute('data-period');
-    elements[i].classList.add('typewrite-show');
+  const typewriteEls = document.getElementsByClassName('typewrite');
+  Array.prototype.forEach.call(typewriteEls, async (typewriteEl: Element) => {
+    var toRotate = typewriteEl.getAttribute('data-type');
+    var period = typewriteEl.getAttribute('data-period');
+    typewriteEl.classList.add('typewrite-show');
     if (toRotate) {
       await sleep(1000);
-      new TxtType(elements[i], JSON.parse(toRotate), period || '1');
+      new TxtType(typewriteEl, JSON.parse(toRotate), period);
     }
-  }
+  });
 }
 
 export default typewrite;
