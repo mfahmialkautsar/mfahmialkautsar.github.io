@@ -1,5 +1,5 @@
 function sleep(timeout: number) {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>((resolve) => {
     setTimeout(resolve, timeout);
   });
 }

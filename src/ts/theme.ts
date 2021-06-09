@@ -33,7 +33,9 @@ const fetchNightTheme = fetch('/css/night.css')
   });
 
 const setNightTheme = (completion: (result: string) => void) =>
-  fetchNightTheme.then(completion);
+  fetchNightTheme.then(completion).catch(() => {
+    setNightTheme(completion);
+  });
 
 function theme() {
   let theme = localStorage.getItem('theme');
