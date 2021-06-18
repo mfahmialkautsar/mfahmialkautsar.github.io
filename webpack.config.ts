@@ -8,9 +8,9 @@ import WebpackDevServer from 'webpack-dev-server';
 const isProduction = process.env.NODE_ENV == 'production';
 const ASSET_PATH = process.env.ASSET_PATH || path.resolve(__dirname, 'docs');
 
-const stylesHandler = isProduction
-  ? MiniCssExtractPlugin.loader
-  : 'style-loader';
+const stylesHandler = isProduction ?
+  MiniCssExtractPlugin.loader :
+  'style-loader';
 
 interface Configuration extends webpack.Configuration {
   devServer?: WebpackDevServer.Configuration;
@@ -29,9 +29,9 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       favicon: path.resolve(__dirname, 'src/favicon.ico'),
       meta: {
-        keywords: 'Fahmi, Portfolio',
-        author: 'Muhamad Fahmi Al Kautsar',
-        viewport: 'width=device-width, initial-scale=1',
+        'keywords': 'Fahmi, Portfolio',
+        'author': 'Muhamad Fahmi Al Kautsar',
+        'viewport': 'width=device-width, initial-scale=1',
         'og:title': {property: 'og:title', content: 'Fahmi Al'},
         'og:url': {
           property: 'og:url',
@@ -39,7 +39,7 @@ const config: Configuration = {
         },
         'og:description': {
           property: 'og:description',
-          content: "Fahmi Al's Portfolio",
+          content: 'Fahmi Al\'s Portfolio',
         },
         'og:image': {
           property: 'og:image',
@@ -48,7 +48,7 @@ const config: Configuration = {
         },
         'og:site_name': {
           property: 'og:site_name',
-          content: "Fahmi Al's Portfolio",
+          content: 'Fahmi Al\'s Portfolio',
         },
         'og:type': {property: 'og:type', content: 'website'},
       },

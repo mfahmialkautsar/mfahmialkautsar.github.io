@@ -40,7 +40,7 @@ const setNightTheme = (completion: (result: string) => void) =>
 function theme() {
   let theme = localStorage.getItem('theme');
 
-  let themeIcon = document.querySelector('.theme-switcher i');
+  const themeIcon = document.querySelector('.theme-switcher i');
   if (!themeIcon) return;
 
   if (theme != 'night') {
@@ -52,16 +52,16 @@ function theme() {
   }
   setTheme(theme);
 
-  let themeButton = document.querySelector('.theme-switcher');
+  const themeButton = document.querySelector('.theme-switcher');
   if (!themeButton) return;
 
   themeButton.setAttribute('data-mode', theme);
 
   let rotate = true;
-  themeButton.addEventListener('click', function (this: HTMLElement) {
+  themeButton.addEventListener('click', function(this: HTMLElement) {
     if (!themeButton || !themeIcon) return;
 
-    let mode = themeButton.getAttribute('data-mode');
+    const mode = themeButton.getAttribute('data-mode');
     if (mode == 'day') {
       themeButton.setAttribute('data-mode', 'night');
       themeIcon.classList.remove('fa-sun-o');

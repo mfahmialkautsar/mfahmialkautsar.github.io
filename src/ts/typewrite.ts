@@ -38,7 +38,7 @@ class Typewriter {
 
     // if (this.loopNum === this.toRotate.length) return;
     const that = this;
-    setTimeout(function () {
+    setTimeout(function() {
       if (typeBuffer == that.buffer) {
         that.tick();
       }
@@ -49,7 +49,7 @@ class Typewriter {
     el: HTMLElement,
     texts: [string],
     period: string | null,
-    delay: number = 0
+    delay: number = 0,
   ) {
     this.texts = texts;
     this.el = el;
