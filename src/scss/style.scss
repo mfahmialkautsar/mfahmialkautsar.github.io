@@ -30,6 +30,12 @@ body {
   transition: 0.3s;
 }
 
+#root {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
 .theme-switcher {
   right: 16px;
   top: 16px;
@@ -230,7 +236,7 @@ footer a:hover {
   color: white;
 }
 
-.text-no-decor {
+.text-decoration-none {
   text-decoration: none;
 }
 

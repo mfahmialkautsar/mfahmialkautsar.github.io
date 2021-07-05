@@ -9,7 +9,7 @@ function project() {
     projects.classList.add('work');
 
     const p = `
-      <a class="text-no-decor text--main card" href="${link}" target="_blank">
+      <a class="text-decoration-none text--main card" href="${link}" target="_blank">
         <div class="image-container app-image-container">
           <div style="background-image: url('${img}')" class="img"></div>
           <div class="kind text--white">${category}</div>
@@ -29,7 +29,7 @@ function project() {
     design.classList.add('work');
 
     const p = `
-      <a class="text-no-decor text--main card" href="${link}" target="_blank">
+      <a class="text-decoration-none text--main card" href="${link}" target="_blank">
         <div class="image-container design-image-container">
           <div style="background-image: url('${img}')" class="img"></div>
         </div>

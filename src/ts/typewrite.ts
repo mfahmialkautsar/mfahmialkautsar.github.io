@@ -74,7 +74,7 @@ function stopTypewrite() {
   }
 }
 
-async function typewrite() {
+function typewrite() {
   const typewriteEls = document.getElementsByClassName('typewrite');
   Array.prototype.forEach.call(typewriteEls, (typewriteEl: HTMLElement) => {
     const texts = typewriteEl.getAttribute('data-texts');
