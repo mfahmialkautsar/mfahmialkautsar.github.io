@@ -1,10 +1,13 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
+import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
 import WebpackDevServer from 'webpack-dev-server';
+import CopyPlugin from 'copy-webpack-plugin';
+import dotenv from 'dotenv';
 
+const dotenvConfig = dotenv.config();
 const isProduction = process.env.NODE_ENV == 'production';
 const ASSET_PATH = process.env.ASSET_PATH || path.resolve(__dirname, 'docs');
 
@@ -17,17 +20,31 @@ interface Configuration extends webpack.Configuration {
 }
 
 const config: Configuration = {
-  entry: path.resolve(__dirname, 'src/ts/app.ts'),
+  entry: path.resolve(__dirname, 'src'),
   output: {
     path: ASSET_PATH,
+    clean: true,
   },
   devServer: {
     open: true,
     contentBase: ASSET_PATH,
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenvConfig.parsed),
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'public',
+          globOptions: {
+            ignore: ['**/index.html', '**/favicon.ico', '**/main.js'],
+          },
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
-      favicon: path.resolve(__dirname, 'src/favicon.ico'),
+      favicon: path.resolve(__dirname, 'public/favicon.ico'),
       meta: {
         'keywords': 'Fahmi, Portfolio',
         'author': 'Muhamad Fahmi Al Kautsar',
@@ -43,8 +60,7 @@ const config: Configuration = {
         },
         'og:image': {
           property: 'og:image',
-          content:
-            'https://raw.githubusercontent.com/mfahmialkautsar/mfahmialkautsar.github.io/master/docs/images/project/linebot_rememberme.jpg',
+          content: `${process.env.API_BASE_URL}/images/projects/linebot_rememberme.jpg`,
         },
         'og:site_name': {
           property: 'og:site_name',
@@ -53,7 +69,7 @@ const config: Configuration = {
         'og:type': {property: 'og:type', content: 'website'},
       },
       minify: 'auto',
-      template: path.resolve(__dirname, 'src/index.html'),
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
   ],
   module: {
