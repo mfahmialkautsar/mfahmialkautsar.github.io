@@ -1,5 +1,5 @@
-import {typewrite, stopTypewrite} from './typewrite';
-import {sleep} from './util';
+import {typewrite, stopTypewrite} from '@/components/typewriter';
+import {sleep} from '@/utils/common';
 
 function greet() {
   const greetOuter = document.getElementsByClassName('greet-outer')[0];

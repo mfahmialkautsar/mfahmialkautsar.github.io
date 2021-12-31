@@ -9,6 +9,27 @@ class Typewriter {
   text;
   isDeleting;
   buffer: number;
+
+  constructor(
+    el: HTMLElement,
+    texts: [string],
+    period: string | null,
+    delay: number = 0,
+  ) {
+    this.texts = texts;
+    this.el = el;
+    typeEl = el;
+    this.loopNum = 0;
+    this.period = parseInt(period || '2000', 10);
+    this.text = '';
+    this.isDeleting = false;
+    this.el.classList.add('typewrite-show');
+    this.buffer = typeBuffer;
+    setTimeout(() => {
+      this.tick();
+    }, delay);
+  }
+
   tick() {
     const i = this.loopNum % this.texts.length;
     const fullTxt = this.texts[i];
@@ -43,26 +64,6 @@ class Typewriter {
         that.tick();
       }
     }, delta);
-  }
-
-  constructor(
-    el: HTMLElement,
-    texts: [string],
-    period: string | null,
-    delay: number = 0,
-  ) {
-    this.texts = texts;
-    this.el = el;
-    typeEl = el;
-    this.loopNum = 0;
-    this.period = parseInt(period || '2000', 10);
-    this.text = '';
-    this.isDeleting = false;
-    this.el.classList.add('typewrite-show');
-    this.buffer = typeBuffer;
-    setTimeout(() => {
-      this.tick();
-    }, delay);
   }
 }
 

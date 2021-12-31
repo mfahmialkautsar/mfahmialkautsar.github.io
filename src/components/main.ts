@@ -1,12 +1,5 @@
-import '@/scss/style.scss';
-import theme from '@/ts/theme';
-import animate from '@/ts/animate';
-import project from '@/ts/project';
-
-document.addEventListener('DOMContentLoaded', function(this: any) {
-  const root = document.getElementById('root');
-  if (!root) return;
-  root.outerHTML = `
+function main(): string {
+  return `
   <div class="theme-switcher">
       <i class="fa fa-2x" title="Theme Switcher" aria-label="Theme Switcher"></i>
   </div>
@@ -43,9 +36,6 @@ document.addEventListener('DOMContentLoaded', function(this: any) {
           </ul>
       </div>
   </footer>`;
+}
 
-  theme();
-  project();
-  animate();
-  document.removeEventListener('DOMContentLoaded', this);
-});
+export default main;

@@ -1,4 +1,4 @@
-import greet from '@/ts/greet';
+import greet from '@/utils/animations/greet';
 
 function animate() {
   greet();

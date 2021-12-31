@@ -1,41 +1,8 @@
+import nightTheme from '!!raw-loader!@/css/night.module.css';
+
 interface HeadLink extends HTMLElement {
   href: string;
 }
-
-const fetchNightTheme = fetch('/css/night.css')
-  .then((res) => res.body)
-  .then((rb) => {
-    if (!rb) return;
-    const reader = rb.getReader();
-
-    return new ReadableStream({
-      start(controller) {
-        function push() {
-          reader.read().then(({done, value}) => {
-            if (done) {
-              controller.close();
-              return;
-            }
-
-            controller.enqueue(value);
-            push();
-          });
-        }
-
-        push();
-      },
-    });
-  })
-  .then((stream) => {
-    return new Response(stream, {
-      headers: {'Content-Type': 'text/css'},
-    }).text();
-  });
-
-const setNightTheme = (completion: (result: string) => void) =>
-  fetchNightTheme.then(completion).catch(() => {
-    setNightTheme(completion);
-  });
 
 function theme() {
   let theme = localStorage.getItem('theme');
@@ -102,7 +69,7 @@ function theme() {
       }
     }
 
-    setNightTheme(insertStyle);
+    insertStyle(nightTheme);
     localStorage.setItem('theme', mode);
   }
 }
