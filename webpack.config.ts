@@ -29,7 +29,6 @@ const config: Configuration = {
   },
   devServer: {
     open: true,
-    contentBase: ASSET_PATH,
   },
   plugins: [
     new webpack.DefinePlugin({
