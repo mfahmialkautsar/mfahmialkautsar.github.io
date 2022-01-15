@@ -32,7 +32,7 @@ const config: Configuration = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(dotenvConfig.parsed),
+      'process.env': JSON.stringify(dotenvConfig.parsed) || JSON.stringify(process.env),
     }),
     new CopyPlugin({
       patterns: [
