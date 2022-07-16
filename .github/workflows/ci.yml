@@ -22,10 +22,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Merge
+    - name: Checkout "build"
       run: |
-        git checkout build 2>/dev/null || git checkout -b build
-        git merge master
+        git checkout -b build
 
     - name: Build
       run: |
