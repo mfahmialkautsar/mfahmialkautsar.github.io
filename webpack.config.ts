@@ -72,6 +72,7 @@ const config: Configuration = {
       },
       minify: 'auto',
       template: path.resolve(__dirname, 'public/index.html'),
+      inject: 'body',
     }),
   ],
   module: {
