@@ -1,10 +1,44 @@
 import {Project} from '@/types/models/Project';
 import {Design} from '@/types/models/Design';
-import {getDesigns, getProjects} from '../lib/repositories/data';
-import {getDesignImage, getProjectImage} from '../utils/helper';
+import {getDesigns, getProjects, getOpenSourceProjects} from '../lib/repositories/data';
+import {getDesignImage, getProjectImage, getOpenSourceProjectImage} from '../utils/helper';
 import spinner from './spinner';
 
 function project() {
+  function projectItem(id: string): HTMLElement {
+    const item = document.createElement('div');
+    item.classList.add('projects-item');
+    item.id = id;
+    return item;
+  }
+
+  function createOpenSourceProjectContainer({
+    title,
+    img,
+    category,
+    desc,
+    link,
+  }: Project) {
+    const projects = document.createElement('div');
+    projects.classList.add('project');
+
+    projects.innerHTML = `
+    <a class="text-decoration-none text--main card" href="${link}" target="_blank">
+      <div class="image-container app-image-container">
+        <div style="background-image: url('${getOpenSourceProjectImage(
+    img,
+  )}')" class="img"></div>
+        <div class="kind text--white">${category}</div>
+      </div>
+      <div class="project-text">
+        <h3 class="title">${title}</h3>
+        <p class="desc">${desc}</p>
+      </div>
+    </a>
+    `;
+    return projects;
+  }
+
   function createProjectContainer({
     title,
     img,
@@ -52,41 +86,65 @@ function project() {
   }
 
   async function generateProjectsBlock() {
-    const projectsSection = document.querySelector('#projects');
+    const id = 'projects';
+    const projectsSection = document.getElementById(id);
     if (projectsSection) {
       projectsSection.innerHTML = spinner();
       const projects: [Project] = await getProjects();
-      projectsSection.innerHTML = '';
+      const container = projectItem(id);
+      projectsSection.replaceWith(container);
 
       projects
         .slice()
         .reverse()
         .forEach((proj: Project) => {
           const projectContainer = createProjectContainer(proj);
-          projectsSection?.appendChild(projectContainer);
+          container.appendChild(projectContainer);
+        });
+    }
+  }
+
+  async function generateOpenSourceProjectsBlock() {
+    const id = 'open-source-projects';
+    const openSourceProjectsSection = document.getElementById(id);
+    if (openSourceProjectsSection) {
+      openSourceProjectsSection.innerHTML = spinner();
+      const openSourceProjects: [Project] = await getOpenSourceProjects();
+      const container = projectItem(id);
+      openSourceProjectsSection.replaceWith(container);
+
+      openSourceProjects
+        .slice()
+        .reverse()
+        .forEach((proj: Project) => {
+          const openSourceProjectContainer = createOpenSourceProjectContainer(proj);
+          container.appendChild(openSourceProjectContainer);
         });
     }
   }
 
   async function generateDesignsBlock() {
-    const designsSection = document.querySelector('#designs');
+    const id = 'designs';
+    const designsSection = document.getElementById(id);
 
     if (designsSection) {
       designsSection.innerHTML = spinner();
       const designs: [Design] = await getDesigns();
-      designsSection.innerHTML = '';
+      const container = projectItem(id);
+      designsSection.replaceWith(container);
 
       designs
         .slice()
         .reverse()
         .forEach((design: Design) => {
           const designContainer = createDesignContainer(design);
-          designsSection?.appendChild(designContainer);
+          container.appendChild(designContainer);
         });
     }
   }
 
   generateProjectsBlock();
+  generateOpenSourceProjectsBlock();
   generateDesignsBlock();
 }
 

@@ -8,7 +8,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import dotenv from 'dotenv';
 
 const dotenvConfig = dotenv.config();
-import {PROJECT_IMAGE_URL} from './src/lib/constants/api';
+import {OPEN_SOURCE_PROJECT_IMAGE_URL} from './src/lib/constants/api';
 
 const isProduction = process.env.NODE_ENV == 'production';
 const ASSET_PATH = process.env.ASSET_PATH || path.resolve(__dirname, 'docs');
@@ -61,7 +61,7 @@ const config: Configuration = {
         },
         'og:image': {
           property: 'og:image',
-          content: `${PROJECT_IMAGE_URL}/linebot_rememberme.jpg`,
+          content: `${OPEN_SOURCE_PROJECT_IMAGE_URL}/linebot_rememberme.jpg`,
         },
         'og:site_name': {
           property: 'og:site_name',
