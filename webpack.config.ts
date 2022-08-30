@@ -13,6 +13,75 @@ import {OPEN_SOURCE_PROJECT_IMAGE_URL} from './src/lib/constants/api';
 const isProduction = process.env.NODE_ENV == 'production';
 const ASSET_PATH = process.env.ASSET_PATH || path.resolve(__dirname, 'docs');
 
+const metas: {[key: string]: string} = {
+  keywords: 'Fahmi, Portfolio',
+  author: 'Muhamad Fahmi Al Kautsar',
+  viewport: 'width=device-width, initial-scale=1',
+  title: 'Fahmi Al',
+  url: 'https://mfahmialkautsar.github.io',
+  description: 'Fahmi Al\'s Portfolio',
+  image: `${OPEN_SOURCE_PROJECT_IMAGE_URL}/linebot_rememberme.jpg`,
+  site_name: 'Fahmi Al\'s Portfolio',
+  type: 'website',
+};
+
+const metaKeys: {[key: string]: {[key: string]: string}} = {
+  title: {
+    default: 'name',
+  },
+};
+
+const platforms: {[key: string]: {property: string, content: string, prefix: string}} = {
+  default: {
+    property: 'name',
+    content: 'content',
+    prefix: '',
+  },
+  facebook: {
+    property: 'property',
+    content: 'content',
+    prefix: 'og:',
+  },
+  twitter: {
+    property: 'name',
+    content: 'content',
+    prefix: 'twitter:',
+  },
+};
+
+function generateMetaKey() {
+  for (const meta in metas) {
+    if (metas.hasOwnProperty(meta)) {
+      if (!metaKeys.hasOwnProperty(meta)) {
+        metaKeys[meta] = {};
+      }
+      for (const platform in platforms) {
+        if (!metaKeys[meta].hasOwnProperty(platform)) {
+          metaKeys[meta][platform] = meta;
+        }
+      }
+    }
+  }
+}
+
+generateMetaKey();
+
+const getMeta = (platform: string) => {
+  const {property, content, prefix} = platforms[platform];
+  const platformMetas = Object.entries(metas).map(([key, value]) => ({
+    [`${platform}:${key}`]: {
+      [property]: prefix + metaKeys[key][platform],
+      [content]: value,
+    },
+  }));
+  return Object.assign({}, ...platformMetas);
+};
+
+const getMetaObject = () => {
+  const metaTags = Object.keys(platforms).map(getMeta);
+  return Object.assign({}, ...metaTags);
+};
+
 const stylesHandler = isProduction ?
   MiniCssExtractPlugin.loader :
   'style-loader';
@@ -48,27 +117,7 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       favicon: path.resolve(__dirname, 'public/favicon.ico'),
       meta: {
-        'keywords': 'Fahmi, Portfolio',
-        'author': 'Muhamad Fahmi Al Kautsar',
-        'viewport': 'width=device-width, initial-scale=1',
-        'og:title': {property: 'og:title', content: 'Fahmi Al'},
-        'og:url': {
-          property: 'og:url',
-          content: 'https://mfahmialkautsar.github.io',
-        },
-        'og:description': {
-          property: 'og:description',
-          content: 'Fahmi Al\'s Portfolio',
-        },
-        'og:image': {
-          property: 'og:image',
-          content: `${OPEN_SOURCE_PROJECT_IMAGE_URL}/linebot_rememberme.jpg`,
-        },
-        'og:site_name': {
-          property: 'og:site_name',
-          content: 'Fahmi Al\'s Portfolio',
-        },
-        'og:type': {property: 'og:type', content: 'website'},
+        ...getMetaObject(),
       },
       minify: 'auto',
       template: path.resolve(__dirname, 'public/index.html'),
