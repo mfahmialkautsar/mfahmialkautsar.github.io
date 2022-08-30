@@ -24,6 +24,7 @@ interface Configuration extends webpack.Configuration {
 const config: Configuration = {
   entry: path.resolve(__dirname, 'src'),
   output: {
+    filename: '[id].[hash].js',
     path: ASSET_PATH,
     clean: true,
   },
@@ -107,7 +108,9 @@ export default () => {
     config.mode = 'production';
     if (!config.plugins) return;
 
-    config.plugins.push(new MiniCssExtractPlugin());
+    config.plugins.push(new MiniCssExtractPlugin({
+      filename: '[id].[hash].css',
+    }));
 
     config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
   } else {
