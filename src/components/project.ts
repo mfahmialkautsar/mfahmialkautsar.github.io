@@ -1,7 +1,7 @@
 import {Project} from '@/types/models/Project';
 import {Design} from '@/types/models/Design';
-import {getDesigns, getProjects, getOpenSourceProjects} from '../lib/repositories/data';
-import {getDesignImage, getProjectImage, getOpenSourceProjectImage} from '../utils/helper';
+import {projects, openSourceProjects, designs} from '@/lib/repositories/data';
+import {getDesignImage, getProjectImage, getOpenSourceProjectImage} from '@/utils/helper';
 import spinner from './spinner';
 
 function project() {
@@ -90,7 +90,6 @@ function project() {
     const projectsSection = document.getElementById(id);
     if (projectsSection) {
       projectsSection.innerHTML = spinner();
-      const projects: [Project] = await getProjects();
       const container = projectItem(id);
       projectsSection.replaceWith(container);
 
@@ -109,7 +108,6 @@ function project() {
     const openSourceProjectsSection = document.getElementById(id);
     if (openSourceProjectsSection) {
       openSourceProjectsSection.innerHTML = spinner();
-      const openSourceProjects: [Project] = await getOpenSourceProjects();
       const container = projectItem(id);
       openSourceProjectsSection.replaceWith(container);
 
@@ -129,7 +127,6 @@ function project() {
 
     if (designsSection) {
       designsSection.innerHTML = spinner();
-      const designs: [Design] = await getDesigns();
       const container = projectItem(id);
       designsSection.replaceWith(container);
 
