@@ -57,6 +57,14 @@ const openSourceProjects: Project[] = [
     'desc': '14 classes CNN Crops Diseases detection with 97% accuracy',
     'link': 'https://github.com/mfahmialkautsar/crops-diseases-detection',
   },
+  {
+    'id': 3,
+    'img': 'sureback.jpg',
+    'title': 'SureBack',
+    'category': 'iOS',
+    'desc': 'iOS application to track and record culinary businesses customers\' Instagram story promotion that has fair and automatic reward distribution after 24 hours',
+    'link': 'https://github.com/Cro2One-ILB22',
+  },
 ];
 
 export default openSourceProjects;
