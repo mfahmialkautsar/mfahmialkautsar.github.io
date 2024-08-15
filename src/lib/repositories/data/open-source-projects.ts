@@ -51,6 +51,14 @@ const openSourceProjects: Project[] = [
   },
   {
     'id': 7,
+    'img': 'career_fund.png',
+    'title': 'CareerFund',
+    'category': 'Back End',
+    'desc': 'Spring Boot backend of a P2P lending platform for career switchers to fund their education',
+    'link': 'https://github.com/mfahmialkautsar/CareerFund',
+  },
+  {
+    'id': 8,
     'img': 'crops_diseases_detection.jpg',
     'title': 'Corps Diseases Detection',
     'category': 'Machine Learning',
@@ -58,10 +66,10 @@ const openSourceProjects: Project[] = [
     'link': 'https://github.com/mfahmialkautsar/crops-diseases-detection',
   },
   {
-    'id': 3,
+    'id': 9,
     'img': 'sureback.jpg',
     'title': 'SureBack',
-    'category': 'iOS',
+    'category': 'iOS, Back End, Cloud',
     'desc': 'iOS application to track and record culinary businesses customers\' Instagram story promotion that has fair and automatic reward distribution after 24 hours',
     'link': 'https://github.com/Cro2One-ILB22',
   },
