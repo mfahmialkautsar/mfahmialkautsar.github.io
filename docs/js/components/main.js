@@ -12,7 +12,7 @@ function main() {
           <h1 class="greet-outer d-none">
               <div class="greet-1"><div style="visibility: hidden;">AAL</div><div class="greet-1-inner">Hi!</div></div>
               <div class="greet-2">I'm <span class="text-highlighted">Fahmi</span>.</div>
-              <span class="typewrite" data-texts='["Junior Software Developer."]'><span class="wrap"></span></span>
+              <span class="typewrite" data-texts='["Software Engineer,", "Full-Stack Developer,", "DevOps Engineer,", "Mobile Developer."]'><span class="wrap"></span></span>
           </h1>
       </section>
   </main>
