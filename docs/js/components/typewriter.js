@@ -86,7 +86,7 @@ function typewrite() {
       const texts = typewriteEl.getAttribute('data-texts');
       const period = typewriteEl.getAttribute('data-period');
       if (texts) {
-        new Typewriter(typewriteEl, JSON.parse(texts), period, 1000);
+        _ = new Typewriter(typewriteEl, JSON.parse(texts), period, 1000);
       }
     }
   );

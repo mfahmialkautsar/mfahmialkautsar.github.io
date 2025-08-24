@@ -1,12 +1,10 @@
 import {
   projects,
-  openSourceProjects,
   designs,
 } from '../lib/repositories/data/index.js';
 import {
   getDesignImage,
   getProjectImage,
-  getOpenSourceProjectImage,
 } from '../utils/helper.js';
 import spinner from './spinner.js';
 
@@ -28,39 +26,13 @@ function project() {
    * @param {Project} project
    * @return {HTMLElement}
    */
-  function createOpenSourceProjectContainer({
+  function createProjectContainer({
     title,
     img,
     category,
     desc,
     link,
   }) {
-    const projects = document.createElement('div');
-    projects.classList.add('project');
-
-    projects.innerHTML = `
-    <a class="text-decoration-none text--main card" href="${link}" target="_blank">
-      <div class="image-container app-image-container">
-        <div style="background-image: url('${getOpenSourceProjectImage(
-          img
-        )}')" class="img"></div>
-        <div class="kind text--white">${category}</div>
-      </div>
-      <div class="project-text">
-        <h3 class="title">${title}</h3>
-        <p class="desc">${desc}</p>
-      </div>
-    </a>
-    `;
-    return projects;
-  }
-
-  /**
-   * Create a project item
-   * @param {Project} project
-   * @return {HTMLElement}
-   */
-  function createProjectContainer({ title, img, category, desc, link }) {
     const projects = document.createElement('div');
     projects.classList.add('project');
 
@@ -107,11 +79,11 @@ function project() {
 
   async function generateProjectsBlock() {
     const id = 'projects';
-    const projectsSection = document.getElementById(id);
-    if (projectsSection) {
-      projectsSection.innerHTML = spinner();
+    const ProjectsSection = document.getElementById(id);
+    if (ProjectsSection) {
+      ProjectsSection.innerHTML = spinner();
       const container = projectItem(id);
-      projectsSection.replaceWith(container);
+      ProjectsSection.replaceWith(container);
 
       projects
         .slice()
@@ -121,28 +93,6 @@ function project() {
           (proj) => {
             const projectContainer = createProjectContainer(proj);
             container.appendChild(projectContainer);
-          }
-        );
-    }
-  }
-
-  async function generateOpenSourceProjectsBlock() {
-    const id = 'open-source-projects';
-    const openSourceProjectsSection = document.getElementById(id);
-    if (openSourceProjectsSection) {
-      openSourceProjectsSection.innerHTML = spinner();
-      const container = projectItem(id);
-      openSourceProjectsSection.replaceWith(container);
-
-      openSourceProjects
-        .slice()
-        .reverse()
-        .forEach(
-          /** @param {Project} proj */
-          (proj) => {
-            const openSourceProjectContainer =
-              createOpenSourceProjectContainer(proj);
-            container.appendChild(openSourceProjectContainer);
           }
         );
     }
@@ -171,7 +121,6 @@ function project() {
   }
 
   generateProjectsBlock();
-  generateOpenSourceProjectsBlock();
   generateDesignsBlock();
 }
 

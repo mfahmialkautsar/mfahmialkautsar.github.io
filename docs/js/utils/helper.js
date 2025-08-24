@@ -1,7 +1,6 @@
 import {
-  PROJECT_IMAGE_URL,
   DESIGN_IMAGE_URL,
-  OPEN_SOURCE_PROJECT_IMAGE_URL,
+  PROJECT_IMAGE_URL,
 } from '../lib/constants/api.js';
 
 /**
@@ -15,16 +14,6 @@ function getProjectImage(imageName) {
 }
 
 /**
- * Get open source project image
- * @param {string} imageName
- * @return {string}
- */
-function getOpenSourceProjectImage(imageName) {
-  if (/^http.*/.test(imageName)) return imageName;
-  return `${OPEN_SOURCE_PROJECT_IMAGE_URL}/${imageName}`;
-}
-
-/**
  * Get design image
  * @param {string} imageName
  * @return {string}
@@ -34,4 +23,4 @@ function getDesignImage(imageName) {
   return `${DESIGN_IMAGE_URL}/${imageName}`;
 }
 
-export { getProjectImage, getOpenSourceProjectImage, getDesignImage };
+export { getProjectImage, getDesignImage };

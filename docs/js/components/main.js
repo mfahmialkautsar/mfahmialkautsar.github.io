@@ -20,10 +20,6 @@ function main() {
       <h2>Projects</h2>
       <div class="projects-item-loading" id="projects"></div>
   </section>
-  <section class="projects" id="projects-open-source-projects">
-      <h2>My Open-source Apps</h2>
-      <div class="projects-item-loading" id="open-source-projects"></div>
-  </section>
   <section class="projects" id="projects-designs">
       <h2>My Designs</h2>
       <div class="projects-item-loading" id="designs"></div>

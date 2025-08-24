@@ -88,10 +88,6 @@ h1 {
 .projects {
   margin: 60px auto;
   width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-flow: column;
-  justify-content: center;
 }
 
 .projects h2 {
@@ -161,7 +157,6 @@ h1 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 10px;
 }
 
 .kind {
