@@ -6,3 +6,11 @@
  * @property {string} img
  * @property {string} link
  */
+class Creation {
+  constructor(id, img, title, link) {
+    this.id = id;
+    this.img = img;
+    this.title = title;
+    this.link = link;
+  }
+}

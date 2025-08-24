@@ -1,15 +1,7 @@
-/** @type {Project[]} */
+/** @typedef {Project[]} */
 const projects = [
   {
     id: 1,
-    img: 'antares.jpg',
-    title: 'Antares',
-    category: 'Web',
-    desc: 'IoT platform connectivity provider',
-    link: 'https://antares.id',
-  },
-  {
-    id: 2,
     img: 'lexplay.jpg',
     title: 'LexPlay',
     category: 'iOS, WatchOS',

@@ -1,4 +1,4 @@
-/** @type {Design[]} */
+/** @typedef {Design[]} */
 const designs = [
   {
     id: 1,

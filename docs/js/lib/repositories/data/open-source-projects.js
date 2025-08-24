@@ -1,4 +1,4 @@
-/** @type {Project[]} */
+/** @typedef {Project[]} */
 const openSourceProjects = [
   {
     id: 1,
