@@ -80,6 +80,22 @@ const projects = [
     desc: 'Pre-school dyslexic kids app to learn the alphabet by using the multi-sensory approaches',
     link: 'https://lexplay.vercel.app',
   },
+  {
+    id: 11,
+    img: 'o11y.jpg',
+    title: 'Goo11y (Go) | O11y (Rust)',
+    category: 'Monitoring',
+    desc: 'All-in-one OTLP observability wrapper for OpenTelemetry Collector including metrics, logs, traces, and profiling',
+    link: 'https://pkg.go.dev/github.com/mfahmialkautsar/goo11y',
+  },
+  {
+    id: 12,
+    img: 'nats-client.jpg',
+    title: 'NATS Client',
+    category: 'DevTools, VSCode Extension',
+    desc: 'Visual Studio Code extension to connect and perform NATS operations',
+    link: 'https://marketplace.visualstudio.com/items?itemName=mfahmialkautsar.nats-client',
+  }
 ];
 
 export default projects;
