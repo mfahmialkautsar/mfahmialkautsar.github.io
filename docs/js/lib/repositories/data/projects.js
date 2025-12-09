@@ -95,6 +95,14 @@ const projects = [
     category: 'DevTools, VSCode Extension',
     desc: 'Visual Studio Code extension to connect and perform NATS operations',
     link: 'https://marketplace.visualstudio.com/items?itemName=mfahmialkautsar.nats-client',
+  },
+  {
+    id: 13,
+    img: 'agentic_rag_finance_assistant.jpg',
+    title: 'Agentic RAG Finance Assistant (Telegram Bot)',
+    category: 'AI, Bot',
+    desc: 'AI chat assistant that can store expenses, extract details from receipt images, review past activity, or provide insights about your financial patterns. It uses retrieval-augmented reasoning to give context-aware answers.',
+    link: 'https://t.me/FintrasBot'
   }
 ];
 
