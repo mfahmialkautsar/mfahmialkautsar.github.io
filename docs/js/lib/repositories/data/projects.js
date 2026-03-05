@@ -102,7 +102,7 @@ const projects = [
     title: 'Agentic RAG Finance Assistant (Telegram Bot)',
     category: 'AI, Bot',
     desc: 'AI chat assistant that can store expenses, extract details from receipt images, review past activity, or provide insights about your financial patterns. It uses retrieval-augmented reasoning to give context-aware answers.',
-    link: 'https://t.me/FintrasBot'
+    link: 'https://t.me/ElFinansBot'
   }
 ];
 
